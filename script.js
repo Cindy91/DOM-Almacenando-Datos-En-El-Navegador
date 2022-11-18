@@ -9,6 +9,7 @@ const addTask = (evento) => {
   list.appendChild(task);
 }
 
+const taskList = [];
 
 //Arrow functions o funciones anonimas
 const createTask = (evento) => {
@@ -25,6 +26,17 @@ const createTask = (evento) => {
   input.value = '';
   //backticks
   const taskContent = document.createElement('div');
+  
+  //Construcción del objeto. No hace falta agregar valor a las variables en este punto
+  const taskObject ={
+    value,
+    dateFormat
+  }
+
+  taskList.push(taskObject);
+
+  //API almacenamiento
+  localStorage.setItem('tasks', JSON.stringify(taskObject));
 
   const titleTask = document.createElement('span');
   titleTask.classList.add('task');
